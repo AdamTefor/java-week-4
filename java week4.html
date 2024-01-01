@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma Galerie d'Images</title>
+  <style>
+    /* Styles pour la galerie */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    figure {
+      margin: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    /* Styles supplémentaires selon vos besoins */
+  </style>
+</head>
+<body>
+
+<h1>Galerie d'Images</h1>
+
+<div class="gallery" role="region" aria-label="Galerie d'Images">
+  <figure tabindex="0">
+    <img src="image1.jpg" alt="Description de l'image 1">
+    <figcaption>Description de l'image 1</figcaption>
+  </figure>
+  <figure tabindex="0">
+    <img src="image2.jpg" alt="Description de l'image 2">
+    <figcaption>Description de l'image 2</figcaption>
+  </figure>
+  <!-- Ajoutez d'autres figures pour vos images avec des alt text appropriés -->
+</div>
+
+<script>
+  // Fonction pour ajouter l'attribut tabindex à chaque figure
+  function addTabIndexes() {
+    const figures = document.querySelectorAll('.gallery figure');
+    figures.forEach((figure, index) => {
+      figure.setAttribute('tabindex', index + 1);
+      figure.addEventListener('mouseover', onMouseOver);
+      figure.addEventListener('mouseleave', onMouseLeave);
+      figure.addEventListener('focus', onFocus);
+      figure.addEventListener('blur', onBlur);
+    });
+  }
+
+  // Fonctions pour gérer les événements
+  function onMouseOver(event) {
+    console.log('La souris est sur l\'image');
+    // Ajoutez votre logique pour l'interaction au survol de la souris
+  }
+
+  function onMouseLeave(event) {
+    console.log('La souris a quitté l\'image');
+    // Ajoutez votre logique pour l'interaction lorsque la souris quitte l'image
+  }
+
+  function onFocus(event) {
+    console.log('Image focus');
+    // Ajoutez votre logique pour l'interaction lorsque l'image est en focus
+  }
+
+  function onBlur(event) {
+    console.log('Image blur');
+    // Ajoutez votre logique pour l'interaction lorsque l'image perd le focus
+  }
+
+  // Ajoutez un écouteur d'événement pour charger la fonction addTabIndexes au chargement de la page
+  window.onload = function() {
+    addTabIndexes();
+    console.log('Page chargée');
+  };
+</script>
+</body>
+</html>
